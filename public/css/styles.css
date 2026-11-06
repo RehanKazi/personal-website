@@ -1,0 +1,204 @@
+:root {
+  --paper: rgb(41, 44, 51);
+  --ink: #fef1df;
+  --faint: #9aa0aa;
+  --rule: #3c404a;
+  --highlight: #353943;
+  --serif: "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", Georgia, serif;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-inline: 20px;
+  padding-block: 28px 10px;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+a:hover {
+  background: var(--highlight);
+}
+a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+ul,
+ol {
+  margin: 1rem 0;
+  padding-left: 40px;
+}
+li {
+  margin: 0.35rem 0;
+}
+li ul {
+  margin: 0.25rem 0;
+}
+
+/* The drawn wheel reaches about 65px from its centre, so while it rotates it
+   pokes ~15px past the top and bottom of its 100px box. The bottom padding
+   keeps the text clear of that. */
+.sketch {
+  padding: 48px 0 24px;
+}
+
+.wheel {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 0.2s ease;
+}
+.wheel.dragging {
+  cursor: grabbing;
+  opacity: 1;
+}
+.wheel:hover {
+  opacity: 0.6;
+}
+.wheel:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 6px;
+}
+
+.sketch svg {
+  display: block;
+  height: 100px;
+  width: auto;
+  max-width: 100%;
+  overflow: visible;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sketch svg * {
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.name {
+  display: inline;
+  font-size: 21px;
+  font-weight: 700;
+  font-family: inherit;
+  margin: 0;
+}
+
+.nav {
+  text-align: center;
+  margin: 2.2rem 0 0.5rem;
+}
+.nav a {
+  margin: 0 0.45rem;
+}
+.nav a[aria-current="page"] {
+  font-style: italic;
+  text-decoration: none;
+  background: var(--highlight);
+}
+
+.panel {
+  margin-top: 0.5rem;
+}
+.panel h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 1.4rem 0 0;
+}
+.panel h2:first-child {
+  margin-top: 0.6rem;
+}
+
+.role {
+  font-style: italic;
+}
+.when {
+  color: var(--faint);
+  font-size: 16px;
+  margin-left: 0.6rem;
+}
+
+.back {
+  text-align: center;
+  margin: 1.8rem 0 0.4rem;
+}
+
+
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0.5rem 0 1.5rem;
+}
+.links a {
+  display: inline-flex;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.links a:hover {
+  background: none;
+  opacity: 0.55;
+}
+.links svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sketch svg {
+    transition-duration: 0.01ms;
+  }
+}
+
+@media (max-width: 520px) {
+  body {
+    font-size: 18px;
+  }
+  ul,
+  ol {
+    padding-left: 24px;
+  }
+  .nav a {
+    display: inline-block;
+    margin: 0.15rem 0.4rem;
+  }
+}
